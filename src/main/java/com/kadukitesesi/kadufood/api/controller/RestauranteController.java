@@ -26,6 +26,8 @@ import com.kadukitesesi.kadufood.domain.repository.RestauranteRepository;
 import com.kadukitesesi.kadufood.domain.service.CadastroRestauranteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static com.kadukitesesi.kadufood.domain.repository.infraestructure.specs.RestauranteSpecs.*;
+
 @RestController
 @RequestMapping(value = "/restaurantes")
 public class RestauranteController {
@@ -58,10 +60,22 @@ public class RestauranteController {
 	}
 
 	@GetMapping("/restaurante-nome")
-	public List<Restaurante> restaurantesNome(String nome) {
-		return restauranteRepository.findByNomeContaining(nome);
+	public List<Restaurante> restauranteNome(String nome) {
+		return restauranteRepository.consultarPorNome(nome);
 	}
-	
+
+	@GetMapping("/restaurante-nome-frete")
+	public List<Restaurante> restaurantesNomeFrete(String nome
+			, BigDecimal freteInicial, BigDecimal freteFinal) {
+		return restauranteRepository.find(nome, freteInicial, freteFinal);
+	}
+
+	@GetMapping("/restaurante-frete-gratis")
+	public List<Restaurante> restaurantesComFreteGratis(String nome) {
+		return restauranteRepository.findComFreteGratis(nome);
+	}
+
+
 	@PostMapping
 	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
 		try {
