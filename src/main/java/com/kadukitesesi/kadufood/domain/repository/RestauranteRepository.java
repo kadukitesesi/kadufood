@@ -1,13 +1,13 @@
 package com.kadukitesesi.kadufood.domain.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import com.kadukitesesi.kadufood.domain.model.Restaurante;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RestauranteRepository {
+public interface RestauranteRepository extends JpaRepository<Restaurante,Long> {
 
-	List<Restaurante> listar();
-	Restaurante buscar(Long id);
-	Restaurante salvar(Restaurante restaurante);
-	void remover(Restaurante restaurante);
-	
+	List<Restaurante> findByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
+
+	List<Restaurante> findByNomeContaining(String nome);
 }
