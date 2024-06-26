@@ -75,6 +75,11 @@ public class RestauranteController {
 		return restauranteRepository.findComFreteGratis(nome);
 	}
 
+	@GetMapping("/primeiro")
+	public Optional<Restaurante> restaurantePrimeiro() {
+		return restauranteRepository.buscarPrimeiro();
+	}
+
 
 	@PostMapping
 	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
@@ -96,7 +101,7 @@ public class RestauranteController {
 			Optional<Restaurante> restauranteAtual = restauranteRepository.findById(restauranteId);
 			
 			if (restauranteAtual.isPresent()) {
-				BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+				BeanUtils.copyProperties(restaurante, restauranteAtual, "id","formasPagamento","endereco");
 				
 				Restaurante restauranteSalvo = cadastroRestaurante.salvar(restauranteAtual.get());
 				return ResponseEntity.ok(restauranteSalvo);
