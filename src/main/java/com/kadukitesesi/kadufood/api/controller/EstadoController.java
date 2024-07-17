@@ -2,7 +2,10 @@ package com.kadukitesesi.kadufood.api.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.kadukitesesi.kadufood.domain.model.Estado;
+import com.kadukitesesi.kadufood.domain.repository.EstadoRepository;
 import com.kadukitesesi.kadufood.domain.service.CadastroEstadoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.kadukitesesi.kadufood.domain.repository.EstadoRepository;
 
 @RestController
 @RequestMapping("/estados")
@@ -41,13 +42,13 @@ public class EstadoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Estado adicionar(@RequestBody Estado estado) {
+	public Estado adicionar(@RequestBody @Valid Estado estado) {
 		return cadastroEstado.salvar(estado);
 	}
 	
 	@PutMapping("/{estadoId}")
 	public Estado atualizar(@PathVariable Long estadoId,
-			@RequestBody Estado estado) {
+			@RequestBody @Valid Estado estado) {
 		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
 		
 		BeanUtils.copyProperties(estado, estadoAtual, "id");

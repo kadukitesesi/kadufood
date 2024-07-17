@@ -1,5 +1,6 @@
 package com.kadukitesesi.kadufood.domain.service;
 
+import com.kadukitesesi.kadufood.domain.repository.CozinhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.kadukitesesi.kadufood.domain.exception.CozinhaNaoEncontradaException;
 import com.kadukitesesi.kadufood.domain.exception.EntidadeEmUsoException;
 import com.kadukitesesi.kadufood.domain.model.Cozinha;
-import com.kadukitesesi.kadufood.domain.repository.CozinhaRepository;
 
 @Service
 public class CadastroCozinhaService {

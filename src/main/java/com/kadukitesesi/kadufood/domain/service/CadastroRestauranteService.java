@@ -1,9 +1,9 @@
 package com.kadukitesesi.kadufood.domain.service;
 
+import com.kadukitesesi.kadufood.domain.exception.RestauranteNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kadukitesesi.kadufood.domain.exception.RestauranteNaoEncontradoException;
 import com.kadukitesesi.kadufood.domain.model.Cozinha;
 import com.kadukitesesi.kadufood.domain.model.Restaurante;
 import com.kadukitesesi.kadufood.domain.repository.RestauranteRepository;

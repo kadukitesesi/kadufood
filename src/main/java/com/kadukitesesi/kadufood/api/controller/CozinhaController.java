@@ -2,7 +2,10 @@ package com.kadukitesesi.kadufood.api.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.kadukitesesi.kadufood.domain.model.Cozinha;
+import com.kadukitesesi.kadufood.domain.repository.CozinhaRepository;
 import com.kadukitesesi.kadufood.domain.service.CadastroCozinhaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.kadukitesesi.kadufood.domain.repository.CozinhaRepository;
 
 @RestController
 @RequestMapping(value = "/cozinhas")
@@ -41,13 +42,13 @@ public class CozinhaController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cozinha adicionar(@RequestBody Cozinha cozinha) {
+	public Cozinha adicionar(@RequestBody @Valid Cozinha cozinha) {
 		return cadastroCozinha.salvar(cozinha);
 	}
 	
 	@PutMapping("/{cozinhaId}")
 	public Cozinha atualizar(@PathVariable Long cozinhaId,
-			@RequestBody Cozinha cozinha) {
+			@RequestBody @Valid Cozinha cozinha) {
 		Cozinha cozinhaAtual = cadastroCozinha.buscarOuFalhar(cozinhaId);
 		
 		BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");

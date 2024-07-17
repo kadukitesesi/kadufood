@@ -1,8 +1,9 @@
 package com.kadukitesesi.kadufood.domain.repository;
 
-import com.kadukitesesi.kadufood.domain.model.Estado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.kadukitesesi.kadufood.domain.model.Estado;
 
 @Repository
 public interface EstadoRepository extends JpaRepository<Estado, Long> {

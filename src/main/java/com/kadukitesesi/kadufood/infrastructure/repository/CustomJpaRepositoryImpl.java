@@ -4,10 +4,9 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import com.kadukitesesi.kadufood.domain.repository.CustomJpaRepository;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-
-import com.kadukitesesi.kadufood.domain.repository.CustomJpaRepository;
 
 public class CustomJpaRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID>
 	implements CustomJpaRepository<T, ID> {

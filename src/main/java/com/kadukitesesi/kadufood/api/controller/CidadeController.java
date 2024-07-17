@@ -2,7 +2,12 @@ package com.kadukitesesi.kadufood.api.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import com.kadukitesesi.kadufood.domain.exception.EstadoNaoEncontradoException;
+import com.kadukitesesi.kadufood.domain.exception.NegocioException;
 import com.kadukitesesi.kadufood.domain.model.Cidade;
+import com.kadukitesesi.kadufood.domain.repository.CidadeRepository;
 import com.kadukitesesi.kadufood.domain.service.CadastroCidadeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.kadukitesesi.kadufood.domain.exception.EstadoNaoEncontradoException;
-import com.kadukitesesi.kadufood.domain.exception.NegocioException;
-import com.kadukitesesi.kadufood.domain.repository.CidadeRepository;
 
 @RestController
 @RequestMapping(value = "/cidades")
@@ -43,7 +44,7 @@ public class CidadeController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cidade adicionar(@RequestBody Cidade cidade) {
+	public Cidade adicionar(@RequestBody @Valid Cidade cidade) {
 		try {
 			return cadastroCidade.salvar(cidade);
 		} catch (EstadoNaoEncontradoException e) {
@@ -53,7 +54,7 @@ public class CidadeController {
 	
 	@PutMapping("/{cidadeId}")
 	public Cidade atualizar(@PathVariable Long cidadeId,
-			@RequestBody Cidade cidade) {
+			@RequestBody @Valid Cidade cidade) {
 		try {
 			Cidade cidadeAtual = cadastroCidade.buscarOuFalhar(cidadeId);
 			

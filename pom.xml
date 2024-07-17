@@ -6,17 +6,17 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.1.7.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <relativePath/>
   </parent>
   
   <groupId>com.kadukitesesi</groupId>
-  <artifactId>kadufood-api</artifactId>
+  <artifactId>kadufood</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>kadufood-api</name>
+  <name>kadufood</name>
   <description>API de delivery de comida</description>
 
   <properties>
-    <java.version>12</java.version>
+    <java.version>17</java.version>
   </properties>
 
   <dependencies>

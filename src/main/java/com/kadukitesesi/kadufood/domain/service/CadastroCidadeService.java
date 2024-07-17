@@ -1,5 +1,6 @@
 package com.kadukitesesi.kadufood.domain.service;
 
+import com.kadukitesesi.kadufood.domain.repository.CidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -9,7 +10,6 @@ import com.kadukitesesi.kadufood.domain.exception.CidadeNaoEncontradaException;
 import com.kadukitesesi.kadufood.domain.exception.EntidadeEmUsoException;
 import com.kadukitesesi.kadufood.domain.model.Cidade;
 import com.kadukitesesi.kadufood.domain.model.Estado;
-import com.kadukitesesi.kadufood.domain.repository.CidadeRepository;
 
 @Service
 public class CadastroCidadeService {

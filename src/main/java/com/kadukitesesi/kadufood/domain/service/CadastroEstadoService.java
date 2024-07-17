@@ -1,14 +1,14 @@
 package com.kadukitesesi.kadufood.domain.service;
 
+import com.kadukitesesi.kadufood.domain.exception.EstadoNaoEncontradoException;
+import com.kadukitesesi.kadufood.domain.repository.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.kadukitesesi.kadufood.domain.exception.EntidadeEmUsoException;
-import com.kadukitesesi.kadufood.domain.exception.EstadoNaoEncontradoException;
 import com.kadukitesesi.kadufood.domain.model.Estado;
-import com.kadukitesesi.kadufood.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroEstadoService {
